@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class workerAI : MonoBehaviour
+public class WorkerAI : MonoBehaviour
 {
     NavMeshAgent agent;
     public Transform[] waypoints;
@@ -20,8 +21,11 @@ public class workerAI : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, target) < 1)
         {
-            IterateWaypointIndex();
-            UpdateDestination();
+
+
+            TaskSelection();
+           // IterateWaypointIndex();
+           // UpdateDestination();
         }
     }
 
@@ -38,11 +42,14 @@ public class workerAI : MonoBehaviour
             waypointIndex = 0;
     }
 
-    void taskSelection()
+    void TaskSelection()
     {
-        if(waypoints[waypointIndex].position == waypoints[0].position)
-        {
+        int i = 0;
 
-        }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                    IterateWaypointIndex();
+                    UpdateDestination();
+            }
     }
 }
