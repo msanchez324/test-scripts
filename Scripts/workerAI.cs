@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class worker : MonoBehaviour
+public class workerAI : MonoBehaviour
 {
     NavMeshAgent agent;
     public Transform[] waypoints;
