@@ -13,7 +13,7 @@ public class WorkerAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        UpdateDestination();
+        //UpdateDestination();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class WorkerAI : MonoBehaviour
         {
 
 
-            TaskSelection();
+            NextTask();
            // IterateWaypointIndex();
            // UpdateDestination();
         }
@@ -44,12 +44,19 @@ public class WorkerAI : MonoBehaviour
 
     void TaskSelection()
     {
-        int i = 0;
+        if ( target == waypoints[0].position)
+        {
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                    IterateWaypointIndex();
-                    UpdateDestination();
-            }
+        }
+            
+    }
+
+    void NextTask()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            IterateWaypointIndex();
+            UpdateDestination();
+        }
     }
 }
