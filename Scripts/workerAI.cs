@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,13 +6,16 @@ public class WorkerAI : MonoBehaviour
     NavMeshAgent agent;
     public Transform[] waypoints;
     int waypointIndex;
+    int i;
     Vector3 target;
+    public GameObject[] msg;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //UpdateDestination();
+        UpdateDestination();
+
     }
 
     // Update is called once per frame
@@ -22,10 +24,11 @@ public class WorkerAI : MonoBehaviour
         if(Vector3.Distance(transform.position, target) < 1)
         {
 
-
+            
             NextTask();
-           // IterateWaypointIndex();
-           // UpdateDestination();
+            TaskSelection();
+            // IterateWaypointIndex();
+            // UpdateDestination();
         }
     }
 
@@ -44,11 +47,19 @@ public class WorkerAI : MonoBehaviour
 
     void TaskSelection()
     {
-        if ( target == waypoints[0].position)
+        i++;
+        if (i == msg.Length)
+            i =0;
+        
+        if (agent.transform.position == waypoints[i].position)
         {
-
+            msg[i].SetActive(true);
         }
-            
+        else
+        {
+            msg[i].SetActive(false);
+        }
+
     }
 
     void NextTask()
