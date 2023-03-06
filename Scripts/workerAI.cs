@@ -26,7 +26,7 @@ public class WorkerAI : MonoBehaviour
 
             
             NextTask();
-            TaskSelection();
+           // TaskSelection();
             // IterateWaypointIndex();
             // UpdateDestination();
         }
