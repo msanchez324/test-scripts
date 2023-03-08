@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class MessagePop : MonoBehaviour
 {
-    public GameObject msg;
-
-    public Transform msgLookAt;
-    private Transform msgPosition;
-    // Collider GetCollider() { return player.GetComponent<Collider>(); }
+    public GameObject msg;      //Message Game Object variable
+    public Transform msgLookAt;     //Variable where msg will be looking at.
+    private Transform msgPosition;      //
 
     // Start is called before the first frame update
     void Start()
@@ -23,18 +21,19 @@ public class MessagePop : MonoBehaviour
         }
     }
 
+    //Detect when the collider enter the triggers
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter");
-        if (other.tag== "Player")
-        {
-            Debug.Log("entro al if"); msg.SetActive(true);
-        }
+        if (other.CompareTag("Player"))
+            msg.SetActive(true);
           
     }
 
+    //Detect when the collider exit the triggers
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player"))
             msg.SetActive(false);
     }
